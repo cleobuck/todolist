@@ -1,37 +1,41 @@
-<!-- il lit le contenu du fichier json, et affiche chaque entrée 
-dans la bonne zone ("A Faire" ou "Archive") avec le contenu html nécessaire 
-pour avoir une checkbox.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 
-
-+++écran 2 : la liste des tâches à faire, avec pour chaque tâche, une checkbox. 
-Lorsqu'une tâche est effectuée, on coche la tâche puis on appuye 
-sur un bouton "Enregistrer" qui rafraichit la liste en barrant la tâche terminée et 
-en la mettant dans la zone "archivée".
-
-
--->
-
-
+<form>
 <p> A faire</p>
-
+<!-- vient chercher les taches du fichier json et les affichent -->
 <?php 
-
-
-if (isset($_POST['submit'])) {
-
+    if (isset($_POST['submit'])) {
     $todo = file_get_contents("todo.json");
     $todoDeco = json_decode($todo);
+   
+ 
 
+   
+    }
+    foreach ($todoDeco as $key => $value) {
+
+      
+    ?>
+    <input type ="checkbox"><?php echo $value->tache;?><br><?php };
 ?>
 
 
-<input type="checkbox" value="tache1"> tâche 1<br>
-  <input type="checkbox" value="tache2"> tâche 2<br>
- <button>Enregistrer</button>
+ <input type="submit" name="submit" value="Enregistrer">
 
- <p> archive </p>
-<input type="checkbox" value="tache1" checked> tâche 1<br>
-  <input type="checkbox" value="tache2" checked> tâche 2<br>
- <button>Enregistrer</button>
+</form>
+
+
+    
+</body>
+</html>
+
 
 
