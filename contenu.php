@@ -12,22 +12,29 @@
 <p> A faire</p>
 <!-- vient chercher les taches du fichier json et les affichent -->
 <?php 
+
+    $index;
     if (isset($_POST['submit'])) {
     $todo = file_get_contents("todo.json");
     $todoDeco = json_decode($todo);
-   
- 
-
-   
     }
     foreach ($todoDeco as $key => $value) {
 
-      
+    if(empty($_POST[$value->tache])) {
+       
     ?>
-    <input type ="checkbox"><?php echo $value->tache;?><br><?php };
+    <input type ="checkbox" name="<?php echo $value->tache;?>"><?php echo $value->tache;?><br>
+    
+   
+    <?php
+     
+    
+    };
+  };
+
+
+
 ?>
-
-
  <input type="submit" name="submit" value="Enregistrer">
 
 </form>
