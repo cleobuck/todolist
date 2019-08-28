@@ -9,72 +9,96 @@
 <body>
 
 <form action="index.php" method="post">
-<p> A faire</p>
-<!-- vient chercher les taches du fichier json et les affichent -->
+
+<!---------"à faire"-------------------------------------------->
+
+<section class="afaire">
+
+
 <?php 
 
-    $index;
-  
-    $todo = file_get_contents("todo.json");
-    $todoDeco = json_decode($todo);
-    
-    foreach ($todoDeco as $key => $value) {
 
-      if (!empty($_POST[$value -> tache])) {
-        $value -> checked = true;
-      } else if ($value -> checked === false) {
-  
+// on prend le contenu du fichier json et le decode en php
+  $index;
+  $todo = file_get_contents("todo.json");
+  $todoDeco = json_decode($todo);
+  $rienAFaire = true;
+
+  // on affiche à faire s'il y a des tâches à faire! 
+
+// pour chaque valeur de l'array php, on change la valeur du checked en true s'ils sont cochés et pour ceux dont
+// la valeur est toujours "false", on les affiches à coté d'un checkbox. 
+
+  foreach ($todoDeco as $key => $value) {
+
+    if (!empty($_POST[$value -> tache])) {
+      $value -> checked = true;
+      
+    } else if ($value -> checked === false) {
+    $rienAFaire = false;
 
 ?>
 
-    <input type ="checkbox" name="<?php echo $value -> tache;?>"><?php echo $value->tache;?><br>
+   <span> <input type ="checkbox" name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></span>
 <?php 
       };
     };
-
+// on reencode l'array php en json avec les modifications des "checked" et l'envoie vers le fichier Json
       $newJSON = json_encode($todoDeco);
       file_put_contents("todo.json",$newJSON);
   
 ?>
 
-    <input type="submit" name="submitTache" value="Enregistrer">
+  
 
 </form>
 
+<?php 
+  if ($rienAFaire === false) {
+    ?>
 
-<!----tâches archivées si elle est cochée ---> 
+      <input type="submit" name="submitTache" value="Enregistrer"> 
+
+    <?php ;
+    echo "<h3> A faire </h3>";
+  }
+
+
+?>
+
+</section>
+<!----------ARCHIVE--------------------------------------------------------------------> 
+
 <section class="archive">
 
-<p>archive</p>
+
 
 <?php 
+$Archived = false;
+// on reitere l'array php des tâches, si la valeur de checked est "true", on l'affiche dans un checkbox checké et désactivé
 
-$JsonArchive= file_get_contents("todo.json");
-$archive = json_decode($JsonArchive);
-
-foreach ($archive as $key => $value) {
+foreach ($todoDeco as $key => $value) {
 
   if ($value -> checked === true) {
-
+    $Archived = true;
   ?>
 
-<input type ="checkbox" checked disabled name="<?php echo $value -> tache;?>"><strike><?php echo $value->tache;?></strike><br>
+<p><input type="checkbox" checked disabled name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></p>
 
 <?php
     
   }
 
 };
+if ($Archived === true) {
+  echo "<h3>archive</h3>";
+}
 
 ?>
 
 
 </section>
 
-
-
-
-    
 </body>
 </html>
 
