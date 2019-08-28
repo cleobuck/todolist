@@ -19,7 +19,7 @@ img {
     z-index: -10;
 }
 
-.archive {
+#archive {
     
     background: $backgroundText;
     padding: 20px;
@@ -27,7 +27,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    p   
+    span  
      {
         display: block;
         order: 3;
@@ -69,6 +69,8 @@ img {
         
     }
 }
+
+
 
 
 

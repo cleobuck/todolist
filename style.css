@@ -24,7 +24,7 @@ img {
   z-index: -10;
 }
 
-.archive {
+#archive {
   background: rgba(255, 255, 255, 0.7);
   padding: 20px;
   margin: 2vh 10vw;
@@ -40,7 +40,7 @@ img {
           align-items: center;
 }
 
-.archive p {
+#archive span {
   display: block;
   -webkit-box-ordinal-group: 4;
       -ms-flex-order: 3;
@@ -49,11 +49,11 @@ img {
       align-self: flex-start;
 }
 
-.archive p input {
+#archive span input {
   margin-right: 4px;
 }
 
-.archive h3 {
+#archive h3 {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;

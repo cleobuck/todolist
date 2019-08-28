@@ -17,6 +17,10 @@
 
 <?php include("contenu.php");?>
 
-    
+
+
+<script src="script.js"></script>
+
 </body>
+
 </html>

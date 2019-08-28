@@ -12,7 +12,7 @@
 
 <!---------"à faire"-------------------------------------------->
 
-<section class="afaire">
+<section id='afaire' class="afaire">
 
 
 <?php 
@@ -39,7 +39,7 @@
 
 ?>
 
-   <span> <input type ="checkbox" name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></span>
+   <span> <input type ="checkbox" onclick="archiveToggle(this);" id="checkReload" name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></span>
 <?php 
       };
     };
@@ -69,7 +69,7 @@
 </section>
 <!----------ARCHIVE--------------------------------------------------------------------> 
 
-<section class="archive">
+<section id='archive' class="archive">
 
 
 
@@ -79,11 +79,11 @@ $Archived = false;
 
 foreach ($todoDeco as $key => $value) {
 
-  if ($value -> checked === true) {
+  if ($value->checked == true) {
     $Archived = true;
   ?>
 
-<p><input type="checkbox" checked disabled name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></p>
+<span><input type="checkbox"  checked disabled name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></span>
 
 <?php
     
