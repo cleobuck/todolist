@@ -10,6 +10,12 @@ $backgroundText: rgba(255,255,255, 0.7);
     display: flex;
     align-items: center;
     flex-direction: column;
+    form {
+        padding: 20px;
+        border-radius: 5px;
+        background: $backgroundText;
+        box-shadow: 4px 3px 5px -3px rgba(0,0,0,0.75);
+    }
 }
 
 img {
@@ -20,8 +26,10 @@ img {
 }
 
 #archive {
-    
+
+    border-radius: 5px;
     background: $backgroundText;
+    box-shadow: 4px 3px 5px -3px rgba(0,0,0,0.75);
     padding: 20px;
     margin: 2vh 10vw;
     display: flex;
@@ -47,7 +55,9 @@ img {
 
 .afaire {
     
+    border-radius: 5px;
     background: $backgroundText;
+    box-shadow: 4px 3px 5px -3px rgba(0,0,0,0.75);
     padding: 20px;
     margin: 2vh 10vw;
     display: flex;

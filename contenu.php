@@ -22,7 +22,6 @@
   $index;
   $todo = file_get_contents("todo.json");
   $todoDeco = json_decode($todo);
-  $rienAFaire = true;
 
   // on affiche à faire s'il y a des tâches à faire! 
 
@@ -31,15 +30,15 @@
 
   foreach ($todoDeco as $key => $value) {
 
-    if (!empty($_POST[$value -> tache])) {
-      $value -> checked = true;
+    if (!empty($_POST[$value->tache])) {
+      $value->checked = true;
       
-    } else if ($value -> checked === false) {
-    $rienAFaire = false;
+    } else if ($value->checked == false) {
+    
 
 ?>
 
-   <span> <input type ="checkbox" onclick="archiveToggle(this);" id="checkReload" name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></span>
+   <span> <input type ="checkbox" onclick="archiveToggle(this);" name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></span>
 <?php 
       };
     };
@@ -54,14 +53,10 @@
 </form>
 
 <?php 
-  if ($rienAFaire === false) {
-    ?>
-
-      <input type="submit" name="submitTache" value="Enregistrer"> 
-
-    <?php ;
+  
+   
     echo "<h3> A faire </h3>";
-  }
+  
 
 
 ?>
@@ -74,25 +69,25 @@
 
 
 <?php 
-$Archived = false;
+
 // on reitere l'array php des tâches, si la valeur de checked est "true", on l'affiche dans un checkbox checké et désactivé
 
 foreach ($todoDeco as $key => $value) {
 
   if ($value->checked == true) {
-    $Archived = true;
+  
   ?>
 
-<span><input type="checkbox"  checked disabled name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></span>
+<span><input type="checkbox" checked disabled name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></span>
 
 <?php
     
   }
 
 };
-if ($Archived === true) {
+
   echo "<h3>archive</h3>";
-}
+
 
 ?>
 
