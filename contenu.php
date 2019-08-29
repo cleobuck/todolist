@@ -38,7 +38,7 @@
 
 ?>
 
-   <span> <input type ="checkbox" onclick="archiveToggle(this);" name="<?php echo $value -> tache;?>"><?php echo $value->tache;?></span>
+   <span class="todoDrag" draggable="true"> <input type="checkbox" onclick="archiveToggle(this);" name="<?php echo $value -> tache;?>" ><?php echo $value->tache;?></span>
 <?php 
       };
     };

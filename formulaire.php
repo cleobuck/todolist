@@ -17,6 +17,9 @@ session_start();
 $tacheArr = [];
 $isSame = false;
 
+
+
+
 // je vérifie si le Json n'est pas vide 
 
 if (filesize('todo.json') != 0) {
@@ -32,10 +35,12 @@ if (filesize('todo.json') != 0) {
         if($value->tache == $_POST['tache'] && isset($_POST['checked1'])){
             $value->checked = $_POST['checked1'];
             $isSame = true;
+        } else if ($value->tache == $_POST['dragName']) {
+            $value->checked=true;
+            $isSame = true;
         }
-
         array_push($tacheArr,$value);
-       
+      
     };
 
 };
@@ -56,25 +61,20 @@ if ($_POST['tache-back'] != ""){
             'checked' => false
         );
     }
-   
-  
+
     $doublon = false;
-    
 
     foreach ($tacheArr as $value) {
         if ($value->tache == $_POST['tache-back'] && $value->checked == false)
             $doublon = true;
     };
 
-   
-    
     if ($doublon == false && $_POST['tache-back'] != $_SESSION['ancienneTache'])
         array_push($tacheArr, $tache);
         $_SESSION['ancienneTache'] = $_POST['tache-back'];
        
     // je reconverti l'array en json et l'envoi vers mon fichier json
 };
-
 
 $myJSON = json_encode($tacheArr);
 file_put_contents("todo.json",$myJSON);
